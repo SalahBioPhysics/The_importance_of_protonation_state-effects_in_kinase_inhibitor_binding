@@ -1,0 +1,358 @@
+===========================================================
+<<< MCCE Multi-Conformation Continuum Electrostatics >>>   
+ Marilyn Gunner's Lab at City College of New York, 2005    
+-----------------------------------------------------------
+Version:        2.5.1                                      
+MCCE Home Page: http://www.sci.ccny.cuny.edu/~gunner/mcce  
+Support:        gunner@sci.ccny.cuny.edu                   
+Developed by:   Junjun Mao, Yifan Song, Marilyn Gunner     
+Reference MCCE: If you publish data calculated with MCCE,  
+                you need to cite papers suggested in MCCE  
+                Home Page.                                 
+===========================================================
+
+Last Updates:                                              
+   04/10, Added Pascal Comte's GA/SA algorithm for sidechain
+          packing and sampling.     			      
+   04/10, Added APBS electrostatic calculation option      
+   08/08, Total pairwise is set to be 999.0 if vdw is 999.0
+   08/02, step 3, zero interaction bug fixed               
+   07/23, step 1 changes the policy on AltLoc backbone atoms
+          now it is warning instead of fatal error.        
+   06/22, step 1 recognizes FME and ACE as NTR caps        
+   05/27, step 2 reduces rotation steps for surface residues
+          The run.prm.default uses 0.25 SAS to decide suface
+          residues.                                        
+   05/04, Program doesn't stop at duplicate parameters,    
+          it issues a warning message. This fixes the deadlock
+          caused by multiple new cofactors                 
+   04/24, Energy lookup table compressed, size is reduced  
+          to about 1/12                                    
+   04/24, Opp files are compressed. Temporary files are    
+          stored under local directory.                    
+   04/14, Step 2 rotamer pruning by pairwise corrected.    
+   04/08, Step 2 repacking now ses better H bnd correction.
+   01/26, Step 3 fixed incorrect errno message.            
+   01/14, Step 3 dielectric boundary condition improved.   
+   12/07, Step 3 dielectric boundary condition is corrected.
+   11/17, pKa fitting writes "pKa titration curve too sharp"
+          when occ jumps from 0.015 to 0.985.              
+   11/17, Exposed conformer is marked as E in history.     
+   11/02, Optional quick step 3 included.                  
+   11/02, Pruning fuction is added at the end of step 2.   
+          Parameter lines were added to run.prm.           
+   10/29, Temporary gdbm files have file names.            
+   10/11, Use biggest rxn energy from the last 3 delphi    
+          focusing runs.                                   
+===========================================================
+
+Step 0. Initialize enviroment
+   Load run control file "run.prm"...
+   Done
+
+   Tentatively load local param file "new.tpl"...   No such file, ignore.
+   Done
+
+   Load parameters from directory "/home/salah/johnChodera_project_on_github/reproduce_data/mcce3.5//param04" ... 
+
+   In file /home/salah/johnChodera_project_on_github/reproduce_data/mcce3.5//param04/hmc.tpl, parameter "CONNECT  HMC01  CAB sp2       0     C3B 0     CBB LIG   SG" is already loaded somewhere else.
+   Try delete this entry and run MCCE again
+   Done
+
+   Load linear free energy correction parameters from "/home/mcce/mcce2.5.1/extra.tpl".../home/mcce/mcce2.5.1/extra.tpl
+   File loaded.
+   Done
+
+Step 0 Done.
+
+Not doing "Step 1. Test and format structral file"
+
+Not doing "Step 2. Make multi side chain conformers"
+
+Step 3. Compute energy lookup table
+   Load step 2 output file step2_out.pdb...
+   Done
+
+   Reporting non integer conformer charge ...
+   Passed, no non-integer charges
+   Done
+
+   Creating connectivity table...
+   Done
+
+   Preparing PBE runs at epsilon 4.00 ...
+      4 focusing runs required for this protein.
+   Done
+
+Running delphi surface calculations ...
+
+   Computing pairwise from conformer 1 to 6551 of 6551 total conformers
+      see progress.log for progress...
+   Done
+
+   Computing RXN from conformer 1 to 6551 of 6551 total conformers
+      see progress.log for progress...
+   Done
+
+   Add dummy conformers ... 0 dummy conformers were added.
+   Done
+
+   Making pairwise energy matrices and conformer summary ... 
+energies.opp not found
+   Done
+
+   Skiping writing step 3 rotamer file step3_out.pdb.
+   Total time for step3 (energy calculation) is 29817 seconds.
+
+   Output files (epsilon = 4.00):
+      energies.opp    : energy lookup table, use opp to decode the file
+      head3.lst       : conformer summary
+
+Step 3 Done.
+
+Not doing "Step 4. Monte Carlo Sampling"
+
+===========================================================
+<<< MCCE Multi-Conformation Continuum Electrostatics >>>   
+ Marilyn Gunner's Lab at City College of New York, 2005    
+-----------------------------------------------------------
+Version:        2.5.1                                      
+MCCE Home Page: http://www.sci.ccny.cuny.edu/~gunner/mcce  
+Support:        gunner@sci.ccny.cuny.edu                   
+Developed by:   Junjun Mao, Yifan Song, Marilyn Gunner     
+Reference MCCE: If you publish data calculated with MCCE,  
+                you need to cite papers suggested in MCCE  
+                Home Page.                                 
+===========================================================
+
+Last Updates:                                              
+   04/10, Added Pascal Comte's GA/SA algorithm for sidechain
+          packing and sampling.     			      
+   04/10, Added APBS electrostatic calculation option      
+   08/08, Total pairwise is set to be 999.0 if vdw is 999.0
+   08/02, step 3, zero interaction bug fixed               
+   07/23, step 1 changes the policy on AltLoc backbone atoms
+          now it is warning instead of fatal error.        
+   06/22, step 1 recognizes FME and ACE as NTR caps        
+   05/27, step 2 reduces rotation steps for surface residues
+          The run.prm.default uses 0.25 SAS to decide suface
+          residues.                                        
+   05/04, Program doesn't stop at duplicate parameters,    
+          it issues a warning message. This fixes the deadlock
+          caused by multiple new cofactors                 
+   04/24, Energy lookup table compressed, size is reduced  
+          to about 1/12                                    
+   04/24, Opp files are compressed. Temporary files are    
+          stored under local directory.                    
+   04/14, Step 2 rotamer pruning by pairwise corrected.    
+   04/08, Step 2 repacking now ses better H bnd correction.
+   01/26, Step 3 fixed incorrect errno message.            
+   01/14, Step 3 dielectric boundary condition improved.   
+   12/07, Step 3 dielectric boundary condition is corrected.
+   11/17, pKa fitting writes "pKa titration curve too sharp"
+          when occ jumps from 0.015 to 0.985.              
+   11/17, Exposed conformer is marked as E in history.     
+   11/02, Optional quick step 3 included.                  
+   11/02, Pruning fuction is added at the end of step 2.   
+          Parameter lines were added to run.prm.           
+   10/29, Temporary gdbm files have file names.            
+   10/11, Use biggest rxn energy from the last 3 delphi    
+          focusing runs.                                   
+===========================================================
+
+Step 0. Initialize enviroment
+   Load run control file "run.prm"...
+   Done
+
+   Tentatively load local param file "new.tpl"...   No such file, ignore.
+   Done
+
+   Load parameters from directory "/home/salah/johnChodera_project_on_github/reproduce_data/mcce3.5//param04" ... 
+
+   In file /home/salah/johnChodera_project_on_github/reproduce_data/mcce3.5//param04/hmc.tpl, parameter "CONNECT  HMC01  CAB sp2       0     C3B 0     CBB LIG   SG" is already loaded somewhere else.
+   Try delete this entry and run MCCE again
+   Done
+
+   Load linear free energy correction parameters from "/home/mcce/mcce2.5.1/extra.tpl".../home/mcce/mcce2.5.1/extra.tpl
+   File loaded.
+   Done
+
+Step 0 Done.
+
+Not doing "Step 1. Test and format structral file"
+
+Not doing "Step 2. Make multi side chain conformers"
+
+Not doing "Step 3. Compute energy lookup table"
+
+Step 4. Monte Carlo Sampling
+   Load conformer list from file "head3.lst" ...
+   Scaling factors:
+   VDW0  = 1.000:
+   VDW1  = 1.000:
+   VDW   = 1.000:
+   TORS  = 1.000:
+   ELE   = 1.000:
+   DSOLV = 1.000:
+   Done
+
+   Load pairwise interactions ...
+   Done
+
+   Verify self consistancy of conformer flag ...
+   PRO01A0003_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ALA01A0008_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ILE01A0014_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   PRO01A0021_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ALA01A0035_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   PRO01A0048_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   PRO01A0051_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   PRO01A0053_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ALA01A0057_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   PRO01A0062_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ALA01A0077_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   LEU01A0078_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   PRO01A0100_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ALA01A0109_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   PHE01A0116_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   LEU01A0117_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   PRO01A0122_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   PRO01A0124_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   PRO01A0127_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ALA01A0131_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   LEU01A0135_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   LEU01A0136_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ALA01A0139_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ALA01A0143_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ILE01A0159_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ALA01A0160_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ALA01A0161_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   PRO01A0169_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   PRO01A0171_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ALA01A0175_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ALA01A0183_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ALA01A0189_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ALA01A0198_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   PRO01A0201_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   PRO01A0206_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   PRO01A0207_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ALA01A0209_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   SER01A0223_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   TRP01A0229_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ILE01A0231_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   PRO01A0238_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   PRO01A0240_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   VAL01A0247_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   PRO01A0259_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   PRO01A0260_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   PRO01A0264_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   PRO01A0266_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   VAL01A0267_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ILE01A0270_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   PRO01A0279_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   PRO01A0283_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ALA01A0286_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ILE01A0292_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   PRO01A0299_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   VAL01A0301_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   ALA01A0305_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   PRO01A0307_001 f 0.00 -> t 1.00 (single conformer treated as fixed)
+   Conformer flags updated due to self consistancy.
+
+   Do titration at 1 points...
+   Detailed progress is in file "mc_out"
+   Monte Carlo set up time: 5 seconds.
+   Titration  1:    98 seconds, biggest stdev of conformer occ = 0.039
+   Done
+
+   Fit titration curves to get pKa/Em ...
+   MFE: didn't specify mfe point, do mfe at pKa or Em 
+   Done
+
+   Total time on MC: 176 seconds
+
+   Output files:
+      mc_out          : MC progress and convergence.
+      fort.38         : Occupancy table.
+      entropy.out     : Entropy correction table
+      pK.out          : pKa or Em from titration curve fitting.
+      sum_crg.out     : Summary of residue charges.
+Step 4 Done.
+
+===========================================================
+<<< MCCE Multi-Conformation Continuum Electrostatics >>>   
+ Marilyn Gunner's Lab at City College of New York, 2005    
+-----------------------------------------------------------
+Version:        2.5.1                                      
+MCCE Home Page: http://www.sci.ccny.cuny.edu/~gunner/mcce  
+Support:        gunner@sci.ccny.cuny.edu                   
+Developed by:   Junjun Mao, Yifan Song, Marilyn Gunner     
+Reference MCCE: If you publish data calculated with MCCE,  
+                you need to cite papers suggested in MCCE  
+                Home Page.                                 
+===========================================================
+
+Last Updates:                                              
+   04/10, Added Pascal Comte's GA/SA algorithm for sidechain
+          packing and sampling.     			      
+   04/10, Added APBS electrostatic calculation option      
+   08/08, Total pairwise is set to be 999.0 if vdw is 999.0
+   08/02, step 3, zero interaction bug fixed               
+   07/23, step 1 changes the policy on AltLoc backbone atoms
+          now it is warning instead of fatal error.        
+   06/22, step 1 recognizes FME and ACE as NTR caps        
+   05/27, step 2 reduces rotation steps for surface residues
+          The run.prm.default uses 0.25 SAS to decide suface
+          residues.                                        
+   05/04, Program doesn't stop at duplicate parameters,    
+          it issues a warning message. This fixes the deadlock
+          caused by multiple new cofactors                 
+   04/24, Energy lookup table compressed, size is reduced  
+          to about 1/12                                    
+   04/24, Opp files are compressed. Temporary files are    
+          stored under local directory.                    
+   04/14, Step 2 rotamer pruning by pairwise corrected.    
+   04/08, Step 2 repacking now ses better H bnd correction.
+   01/26, Step 3 fixed incorrect errno message.            
+   01/14, Step 3 dielectric boundary condition improved.   
+   12/07, Step 3 dielectric boundary condition is corrected.
+   11/17, pKa fitting writes "pKa titration curve too sharp"
+          when occ jumps from 0.015 to 0.985.              
+   11/17, Exposed conformer is marked as E in history.     
+   11/02, Optional quick step 3 included.                  
+   11/02, Pruning fuction is added at the end of step 2.   
+          Parameter lines were added to run.prm.           
+   10/29, Temporary gdbm files have file names.            
+   10/11, Use biggest rxn energy from the last 3 delphi    
+          focusing runs.                                   
+===========================================================
+
+Step 0. Initialize enviroment
+   Load run control file "run.prm"...
+   Done
+
+   Tentatively load local param file "new.tpl"...   No such file, ignore.
+   Done
+
+   Load parameters from directory "/home/salah/johnChodera_project_on_github/reproduce_data/mcce3.5//param04" ... 
+
+   In file /home/salah/johnChodera_project_on_github/reproduce_data/mcce3.5//param04/hmc.tpl, parameter "CONNECT  HMC01  CAB sp2       0     C3B 0     CBB LIG   SG" is already loaded somewhere else.
+   Try delete this entry and run MCCE again
+   Done
+
+   Load linear free energy correction parameters from "/home/mcce/mcce2.5.1/extra.tpl".../home/mcce/mcce2.5.1/extra.tpl
+   File loaded.
+   Done
+
+Step 0 Done.
+
+Not doing "Step 1. Test and format structral file"
+
+Not doing "Step 2. Make multi side chain conformers"
+
+Not doing "Step 3. Compute energy lookup table"
+
+Step 4. Monte Carlo Sampling
+   WARNING: Big difference (> 20.0%) is reported
+Step 4 Done.
+
